@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+
+    <div class="container">
+        
+        <div class="row">
+
+        {% for article in articles %}
+
+            <a href="{{ path('article_show', { id: article.id }) }}">
+                <div class="col-sm-4">
+                    <img class="img-fluid" src="{{ article.picture }}" alt="{{ article.title }}_img"/>
+                    <h5>{{ article.title }}</h5>
+                    <p>{{ article.tag }}</p>
+                    <a href="{{ path('article_user',{'id': article.user.id}) }}">{{ article.user.firstname }}</a>
+                </div>
+            </a>
+
+        {% endfor %}
+   
+
+        </div>
+
+    </div>
+
+{% endblock %}
